@@ -23,6 +23,7 @@ class Pokemon
     sql = <<-SQL
       SELECT * FROM pokemon 
       WHERE id = ? 
+      LIMIT 1
     SQL
     
     row = db.execute(sql, id)
