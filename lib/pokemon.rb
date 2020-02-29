@@ -19,8 +19,9 @@ class Pokemon
     @id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
   end
   
-  def self.find(id, db)
-    db.execute("SELECT * FROM pokemon WHERE id = ?", [id]).flatten
+  def self.find(id_num, db)
+    pokemon_info = db.execute("SELECT * FROM pokemon WHERE id=?", id_num).first
+    Pokemon.new(pokemon_info, db)
   end
   
   
